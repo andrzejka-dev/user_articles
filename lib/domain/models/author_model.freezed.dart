@@ -22,9 +22,7 @@ AuthorModel _$AuthorModelFromJson(Map<String, dynamic> json) {
 mixin _$AuthorModel {
   int get id => throw _privateConstructorUsedError;
   String get picture => throw _privateConstructorUsedError;
-  @JsonKey(name: 'firstName')
   String get firstName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'lastName')
   String get lastName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,11 +37,7 @@ abstract class $AuthorModelCopyWith<$Res> {
           AuthorModel value, $Res Function(AuthorModel) then) =
       _$AuthorModelCopyWithImpl<$Res, AuthorModel>;
   @useResult
-  $Res call(
-      {int id,
-      String picture,
-      @JsonKey(name: 'firstName') String firstName,
-      @JsonKey(name: 'lastName') String lastName});
+  $Res call({int id, String picture, String firstName, String lastName});
 }
 
 /// @nodoc
@@ -93,11 +87,7 @@ abstract class _$$AuthorModelImplCopyWith<$Res>
       __$$AuthorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String picture,
-      @JsonKey(name: 'firstName') String firstName,
-      @JsonKey(name: 'lastName') String lastName});
+  $Res call({int id, String picture, String firstName, String lastName});
 }
 
 /// @nodoc
@@ -117,19 +107,19 @@ class __$$AuthorModelImplCopyWithImpl<$Res>
     Object? lastName = null,
   }) {
     return _then(_$AuthorModelImpl(
-      id: null == id
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      picture: null == picture
+      null == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: null == firstName
+      null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: null == lastName
+      null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
@@ -138,13 +128,10 @@ class __$$AuthorModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$AuthorModelImpl extends _AuthorModel {
-  _$AuthorModelImpl(
-      {required this.id,
-      required this.picture,
-      @JsonKey(name: 'firstName') required this.firstName,
-      @JsonKey(name: 'lastName') required this.lastName})
+  _$AuthorModelImpl(this.id, this.picture, this.firstName, this.lastName)
       : super._();
 
   factory _$AuthorModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -155,10 +142,8 @@ class _$AuthorModelImpl extends _AuthorModel {
   @override
   final String picture;
   @override
-  @JsonKey(name: 'firstName')
   final String firstName;
   @override
-  @JsonKey(name: 'lastName')
   final String lastName;
 
   @override
@@ -199,12 +184,8 @@ class _$AuthorModelImpl extends _AuthorModel {
 }
 
 abstract class _AuthorModel extends AuthorModel {
-  factory _AuthorModel(
-          {required final int id,
-          required final String picture,
-          @JsonKey(name: 'firstName') required final String firstName,
-          @JsonKey(name: 'lastName') required final String lastName}) =
-      _$AuthorModelImpl;
+  factory _AuthorModel(final int id, final String picture,
+      final String firstName, final String lastName) = _$AuthorModelImpl;
   _AuthorModel._() : super._();
 
   factory _AuthorModel.fromJson(Map<String, dynamic> json) =
@@ -215,10 +196,8 @@ abstract class _AuthorModel extends AuthorModel {
   @override
   String get picture;
   @override
-  @JsonKey(name: 'firstName')
   String get firstName;
   @override
-  @JsonKey(name: 'lastName')
   String get lastName;
   @override
   @JsonKey(ignore: true)

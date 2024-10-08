@@ -8,16 +8,16 @@ part of 'author_model.dart';
 
 _$AuthorModelImpl _$$AuthorModelImplFromJson(Map<String, dynamic> json) =>
     _$AuthorModelImpl(
-      id: (json['id'] as num).toInt(),
-      picture: json['picture'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
+      (json['id'] as num).toInt(),
+      json['picture'] as String,
+      json['first_name'] as String,
+      json['last_name'] as String,
     );
 
 Map<String, dynamic> _$$AuthorModelImplToJson(_$AuthorModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'picture': instance.picture,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
     };
