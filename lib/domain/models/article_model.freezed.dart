@@ -21,12 +21,16 @@ ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ArticleModel {
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'authorId')
   int get authorId => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get picture => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticleModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticleModelCopyWith<ArticleModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -37,7 +41,7 @@ abstract class $ArticleModelCopyWith<$Res> {
           ArticleModel value, $Res Function(ArticleModel) then) =
       _$ArticleModelCopyWithImpl<$Res, ArticleModel>;
   @useResult
-  $Res call({int id, @JsonKey(name: 'authorId') int authorId, String content});
+  $Res call({int id, int authorId, String content, String picture});
 }
 
 /// @nodoc
@@ -50,12 +54,15 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? authorId = null,
     Object? content = null,
+    Object? picture = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -70,6 +77,10 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      picture: null == picture
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -82,7 +93,7 @@ abstract class _$$ArticleModelImplCopyWith<$Res>
       __$$ArticleModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, @JsonKey(name: 'authorId') int authorId, String content});
+  $Res call({int id, int authorId, String content, String picture});
 }
 
 /// @nodoc
@@ -93,37 +104,42 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
       _$ArticleModelImpl _value, $Res Function(_$ArticleModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? authorId = null,
     Object? content = null,
+    Object? picture = null,
   }) {
     return _then(_$ArticleModelImpl(
-      id: null == id
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      authorId: null == authorId
+      null == authorId
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
               as int,
-      content: null == content
+      null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == picture
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$ArticleModelImpl implements _ArticleModel {
-  _$ArticleModelImpl(
-      {required this.id,
-      @JsonKey(name: 'authorId') required this.authorId,
-      required this.content});
+  _$ArticleModelImpl(this.id, this.authorId, this.content, this.picture);
 
   factory _$ArticleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticleModelImplFromJson(json);
@@ -131,14 +147,15 @@ class _$ArticleModelImpl implements _ArticleModel {
   @override
   final int id;
   @override
-  @JsonKey(name: 'authorId')
   final int authorId;
   @override
   final String content;
+  @override
+  final String picture;
 
   @override
   String toString() {
-    return 'ArticleModel(id: $id, authorId: $authorId, content: $content)';
+    return 'ArticleModel(id: $id, authorId: $authorId, content: $content, picture: $picture)';
   }
 
   @override
@@ -149,14 +166,17 @@ class _$ArticleModelImpl implements _ArticleModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.authorId, authorId) ||
                 other.authorId == authorId) &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.picture, picture) || other.picture == picture));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, authorId, content);
+  int get hashCode => Object.hash(runtimeType, id, authorId, content, picture);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticleModelImplCopyWith<_$ArticleModelImpl> get copyWith =>
@@ -171,10 +191,8 @@ class _$ArticleModelImpl implements _ArticleModel {
 }
 
 abstract class _ArticleModel implements ArticleModel {
-  factory _ArticleModel(
-      {required final int id,
-      @JsonKey(name: 'authorId') required final int authorId,
-      required final String content}) = _$ArticleModelImpl;
+  factory _ArticleModel(final int id, final int authorId, final String content,
+      final String picture) = _$ArticleModelImpl;
 
   factory _ArticleModel.fromJson(Map<String, dynamic> json) =
       _$ArticleModelImpl.fromJson;
@@ -182,12 +200,16 @@ abstract class _ArticleModel implements ArticleModel {
   @override
   int get id;
   @override
-  @JsonKey(name: 'authorId')
   int get authorId;
   @override
   String get content;
   @override
-  @JsonKey(ignore: true)
+  String get picture;
+
+  /// Create a copy of ArticleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticleModelImplCopyWith<_$ArticleModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

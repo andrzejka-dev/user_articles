@@ -5,14 +5,13 @@ import 'package:retrofit/retrofit.dart';
 
 part 'articles_remote_data_source.g.dart';
 
-@injectable  
+@injectable
 @RestApi()
 abstract class ArticlesRemoteRetrofitDataSource {
   @factoryMethod
   factory ArticlesRemoteRetrofitDataSource(Dio dio) =
       _ArticlesRemoteRetrofitDataSource;
 
-
-@GET('/users')
+  @GET('/articles')
   Future<List<ArticleModel>> getArticles();
 }

@@ -35,7 +35,7 @@ class _ArticlesRemoteRetrofitDataSource
     )
         .compose(
           _dio.options,
-          '/users',
+          '/articles',
           queryParameters: queryParameters,
           data: _data,
         )
