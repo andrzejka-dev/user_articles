@@ -16,12 +16,18 @@ import 'package:user_articles/data/remote_data_sources/articles_remote_data_sour
     as _i807;
 import 'package:user_articles/data/remote_data_sources/authors_remote_data_source.dart'
     as _i678;
+import 'package:user_articles/data/remote_data_sources/details_remote_data_source.dart'
+    as _i96;
 import 'package:user_articles/domain/repositories/articles_repository.dart'
     as _i1032;
 import 'package:user_articles/domain/repositories/authors_repository.dart'
     as _i312;
+import 'package:user_articles/domain/repositories/details_repository.dart'
+    as _i700;
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart'
     as _i192;
+import 'package:user_articles/features/details/cubit/details_cubit.dart'
+    as _i427;
 import 'package:user_articles/features/home/cubit/home_cubit.dart' as _i328;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -46,12 +52,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i807.ArticlesRemoteRetrofitDataSource(gh<_i361.Dio>()));
     gh.factory<_i678.AuthorsRemoteRetrofitDataSource>(
         () => _i678.AuthorsRemoteRetrofitDataSource(gh<_i361.Dio>()));
+    gh.factory<_i96.DetailsRemoteRetrofitDataSource>(
+        () => _i96.DetailsRemoteRetrofitDataSource(gh<_i361.Dio>()));
     gh.factory<_i312.AuthorsRepository>(() => _i312.AuthorsRepository(
         remoteDataSource: gh<_i678.AuthorsRemoteRetrofitDataSource>()));
+    gh.factory<_i700.DetailsRepository>(() => _i700.DetailsRepository(
+        remoteDataSource: gh<_i96.DetailsRemoteRetrofitDataSource>()));
     gh.factory<_i1032.ArticlesRepository>(() => _i1032.ArticlesRepository(
         remoteDataSource: gh<_i807.ArticlesRemoteRetrofitDataSource>()));
     gh.factory<_i328.HomeCubit>(() =>
         _i328.HomeCubit(authorsRepository: gh<_i312.AuthorsRepository>()));
+    gh.factory<_i427.DetailsCubit>(() =>
+        _i427.DetailsCubit(detailsRepository: gh<_i700.DetailsRepository>()));
     gh.factory<_i192.ArticlesCubit>(() => _i192.ArticlesCubit(
         articlesRepository: gh<_i1032.ArticlesRepository>()));
     return this;
